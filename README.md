@@ -1,35 +1,29 @@
-# RENÇBER AKMAN | Portfolio
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=3000&pause=1000&color=FF6F91&center=true&vCenter=true&width=435&lines=Hi+there!+I'm+Rençber+Akman;Game+Developer+%2F+Backend+Explorer;Dreamer+%2F+Builder+%2F+Learner" alt="Typing SVG" />
-</p>
+# RENÇBER AKMAN | Backend Architect & Security Enthusiast
 
-![Unreal Engine](https://img.shields.io/badge/Unreal-Engine-blue?logo=unrealengine)
-![C++](https://img.shields.io/badge/C++-00599C?logo=cplusplus&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-grey?logo=express&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![.NET 8](https://img.shields.io/badge/.NET_8-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Cyber Security](https://img.shields.io/badge/Security-Focus-red?style=for-the-badge&logo=kalilinux&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
+**Hello 👋 I'm Rençber.**
+I am a Computer Programming student transitioning from game development to the architecture of secure systems. For me, coding is not just a profession; it is a way to materialize abstract thoughts into logic.
 
-# Hi there 👋 I'm Rençber
+### 🚀 The Journey: From Game Dev to System Architecture
 
----
+I started my journey exploring the depths of **C++** and **Unreal Engine**, which taught me how to think algorithmically. Now, I am channeling that discipline into **Backend Development** and **Cyber Security**.
 
-I'm a Computer Programming student. For me, coding isn't just a profession — it's a way to turn my thoughts into something real.
+Currently, I am building modular systems using **C#, .NET 8, and Clean Architecture**, while simultaneously learning how to secure them against modern threats.
 
-I truly enjoy developing games using Unreal Engine and C++. At the moment, I'm working on a racing game. I'm also exploring backend topics like REST APIs, microservice architecture, Docker, and more to deepen my skills.
+### 🧠 Philosophy & Vision
 
-This repo is a simple space to document what I'm learning, building, and experiencing along the way.  
-I'm still learning a lot, but I try to make what I learn meaningful whenever I can.
+I created this repository to document what I learn, what I build, and the obstacles I overcome along the way.
+I view software not just as a technical tool, but as a medium that creates awareness and provokes thought.
 
-I don't see software as something purely technical — I also see it as a tool to encourage thought and awareness.  
-I'm starting with small projects, but I aim to create things that can reach and resonate with more people over time.
+I start with small projects, but my goal is to build meaningful works that reach more people and broaden their perspectives.
 
-When I write code, I often ask myself:  
-_"What is this line really serving?"_
+> When I write code, I always ask myself:
+> **"What purpose does this line truly serve?"**
 
-Things may not be perfect yet, but I'm leaving my own trace on this journey. 🌱
+I am still learning, debugging, and growing. But on this journey, I am leaving my own unique mark. 🌱
 
----
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=200&section=footer&text=Thanks%20for%20visiting!%20🚀&fontSize=30&fontColor=ffffff" />
-</p>
+[Visit My Portfolio](https://rencberakman.com) | [LinkedIn](https://www.linkedin.com/in/rençber-akman-92b416333)
