@@ -1,362 +1,411 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rençber Akman | Portfolyo</title>
+  <title>Rençber Akman | Backend & Security Architect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    /* === Temel Stil Ayarları === */
-    body {
-      cursor: none; /* Kendi özel imlecimizi kullanacağız */
+    /* === GLOBAL AYARLAR === */
+    :root {
+      --bg-color: #0a0a0a;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --text-main: #e0e0e0;
+      --text-muted: #a0a0a0;
+      --accent-cyan: #00dfd8; /* C# / Tech Rengi */
+      --accent-red: #ff0055;  /* Güvenlik Rengi */
+      --glow: 0 0 20px rgba(0, 223, 216, 0.3);
     }
 
-    * {margin: 0; padding: 0; box-sizing: border-box;}
+    * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Özel imleç için */ }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f5f5;
-      color: #111;
-      transition: background-color 0.4s, color 0.4s;
-    }
-    .dark-mode {
-      background-color: #121212;
-      color: #eee;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
+    /* === ÖZEL İMLEÇ (Cyber Cursor) === */
+    #cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 20px; height: 20px;
+      border: 2px solid var(--accent-cyan);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      transition: width 0.2s, height 0.2s, border-color 0.2s;
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+    #cursor-dot {
+      position: fixed;
+      top: 0; left: 0;
+      width: 4px; height: 4px;
+      background: var(--accent-red);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 10000;
+    }
+    body:hover #cursor { width: 40px; height: 40px; opacity: 0.8; }
+    
+    /* === HEADER & NAV === */
     header {
-      text-align: center;
       padding: 2rem 1rem;
-      background: linear-gradient(to right, #007cf0, #00dfd8);
-      color: white;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(0,223,216,0.1) 0%, transparent 70%);
+      margin-bottom: 2rem;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      text-transform: uppercase;
+    h1 {
+      font-family: 'Fira Code', monospace;
+      font-size: 3rem;
+      background: linear-gradient(to right, var(--accent-cyan), #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--accent-red);
+      font-family: 'Fira Code', monospace;
+      font-size: 1.1rem;
       letter-spacing: 2px;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      background-color: #fff;
+      gap: 2rem;
       padding: 1rem;
-      flex-wrap: wrap;
+      backdrop-filter: blur(5px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     nav a {
       text-decoration: none;
-      color: #007cf0;
-      font-weight: bold;
-      transition: transform 0.3s;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav a:hover { color: var(--accent-cyan); text-shadow: 0 0 8px var(--accent-cyan); }
+    
+    /* === SECTIONS === */
+    section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      display: inline-block;
+      border-bottom: 2px solid var(--accent-red);
+      padding-bottom: 0.5rem;
+    }
+
+    p { margin-bottom: 1.5rem; color: var(--text-muted); }
+
+    /* === GLASSMORPHISM CARDS === */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      transition: 0.4s;
       position: relative;
       overflow: hidden;
     }
 
-    nav a:hover {
-      transform: scale(1.2);
-      text-shadow: 0 0 5px #00dfd8;
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-cyan);
+      box-shadow: var(--glow);
     }
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0%;
-      height: 3px;
-      background: #00dfd8;
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #00dfd8;
-      display: inline-block;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .project {
-      padding: 1rem;
-      border-radius: 10px;
-      background-color: #4383ea;
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-
-    .project:hover {
-      transform: rotateY(5deg) scale(1.03);
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-
-    .badges {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-
+    .card h3 { color: var(--text-main); margin-bottom: 1rem; }
+    
+    /* === TECH BADGES === */
+    .badges { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
     .badge {
-      padding: 0.5rem 1rem;
-      background-color: #007cf0;
-      color: white;
-      border-radius: 20px;
-      font-size: 0.9rem;
+      background: rgba(0, 223, 216, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-cyan);
+      padding: 0.4rem 1rem;
+      border-radius: 5px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      transition: 0.3s;
+    }
+    .badge.sec {
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+      background: rgba(255, 0, 85, 0.1);
+    }
+    .badge:hover { background: var(--accent-cyan); color: #000; }
+    .badge.sec:hover { background: var(--accent-red); color: #fff; }
+
+    /* === MANIFESTO SECTION === */
+    .manifesto {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0, 223, 216, 0.05) 50%, rgba(0,0,0,0) 100%);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .quote {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--text-main);
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    #toggleTheme {
+    /* === CONTACT BUTTONS === */
+    .contact-container { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 1rem 2rem;
+      background: transparent;
+      border: 1px solid var(--text-muted);
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn.primary { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+    .btn.primary:hover { background: var(--accent-cyan); color: #000; box-shadow: var(--glow); }
+    .btn.secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* === CANVAS BACKGROUND === */
+    canvas#bg-canvas {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #007cf0;
-      color: white;
-      border: none;
-      padding: 0.8rem 1rem;
-      border-radius: 25px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00dfd8;
-      z-index: 1000;
+      top: 0; left: 0;
+      z-index: -1;
+      opacity: 0.4;
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem;
       font-size: 0.9rem;
-      background-color: #eee;
-      margin-top: 4rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
-    .dark-mode footer {
-      background-color: #1a1a1a;
-    }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      nav { gap: 0.7rem; }
-      .project { font-size: 0.9rem; }
-    }
-
-    /* === Özel İmleç === */
-    #customCursor {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(0, 124, 240, 0.8);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s;
-      z-index: 9999;
-      box-shadow: 0 0 10px rgba(0,124,240,0.8);
-    }
-
-    canvas#cursorTrail {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 998;
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      nav { gap: 1rem; font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
-  <div id="customCursor"></div>
+
+  <div id="cursor"></div>
+  <div id="cursor-dot"></div>
+  
+  <canvas id="bg-canvas"></canvas>
 
   <header>
-    <h1>Rençber Akman | Portfolyo</h1>
-    <p>Backend Developer • Game Developer  </p>
+    <h1>RENÇBER AKMAN</h1>
+    <div class="subtitle">BACKEND ARCHITECT | SECURITY ENTHUSIAST</div>
   </header>
 
   <nav>
-  <a href="#about">About Me</a>
-<a href="#projects">Projects</a>
-<a href="#technologies">Technologies</a>
-<a href="#goals">Goals</a>
-<a href="#contact">Contact</a>
+    <a href="#about">01. ABOUT</a>
+    <a href="#tech">02. STACK</a>
+    <a href="#projects">03. WORK</a>
+    <a href="#philosophy">04. VISION</a>
+    <a href="#contact">05. CONTACT</a>
   </nav>
 
   <section id="about">
-    <h2>🧑‍💻 About Me</h2>
-    <p>As a Computer Programming student, I am currently focusing on Java and Spring Boot with a specialization in microservices architecture, actively developing my skills in this area. Additionally, I am working on test automation and database technologies like PostgreSQL. I continuously learn and practice to enhance my expertise in backend development. Besides that, I also pursue game development as a hobby, working with Unreal Engine and C++.</p>
-
-
-<h2>🧑‍💻 Hakkimda</h2>
-<p>Bilgisayar Programcılığı öğrencisi olarak, şu anda Java ve Spring Boot ile mikroservis mimarisi üzerine yoğunlaşıyor, bu alanda kendimi geliştiriyorum. Ayrıca test otomasyonu ve PostgreSQL gibi veritabanı teknolojileri üzerinde de aktif olarak çalışıyorum. Backend geliştirme alanında yetkinliklerimi artırmak için sürekli öğreniyor ve pratik yapıyorum. Bunların yanında oyun geliştirme konusunda da Unreal Engine ve C++ ile hobi olarak ilgileniyorum. 
-</p>
-  </section>
-
-<section id="projects">
-  <h2>🎮 My Projects</h2>
-  <div class="projects">
-    <div class="project">
-      <h3>🚗 Racing Game</h3>
-      <p>I'm currently developing a racing game using Unreal Engine and C++.
-This project isn't just about making a game — it's a process where I dive deep into the physics system and truly aim to improve myself in this field.
-My goal isn't simply to build a game; it's to create my own world, think through algorithms, and learn how to produce within a space where I control the visuals and logic.</p>
-    </div>
-    <div class="project">
-  <h3>🔧 Portfolio Backend Development</h3>
-  <p>In my backend project, which I will develop with Java, I am implementing microservices architecture and PostgreSQL integration using Spring Boot. I am modernizing the project with Docker and CI/CD workflows.</p>
- 
-</div>
-  </div>
-</section>
-  <section id="technologies">
-    <h2>⚙️ Tech Stack & Architectures</h2>
-    <div class="badges">
-      <div class="badge">🚀Java</div>
-      <div class="badge">🚀Docker</div>
-      <div class="badge">🚀PostgreSQL</div>
-      <div class="badge">🚀Git & GitHub</div>
-      <div class="badge">🚀Spring Boot</div>
-      <div class="badge">🚀Microservices Architecture</div>
-      <div class="badge">Html</div>
-      <div class="badge">Css</div>
-      <div class="badge">Pascal</div>
-      <div class="badge">Delphi7</div>
-      <div class="badge">C</div>
-      <div class="badge">Unreal Engine</div>
-
+    <h2>01. System Architect</h2>
+    <div class="card">
+      <p>
+        <strong>I am transitioning from a code consumer to a system architect.</strong><br><br>
+        Currently, I am a Computer Programming student focused on understanding the "Operating System of the Universe" through <strong>C# and .NET 8</strong>. My journey has evolved from general game development to building robust, secure backend architectures. 
+      </p>
+      <p>
+        I believe that understanding how a system breaks (Security) is the best way to learn how to build it securely (Backend). My goal is to design modular systems that are not only functional but also philosophically meaningful.
+      </p>
     </div>
   </section>
 
-  <section id="goals">
-    <h2>🎯 - Targeted Skills</h2>
-   
-<div class="badges" style="display: flex; flex-wrap: wrap; gap: 0.7rem;">
-  
-  <div class="badge">🚀Clean Architecture</div>
-  <div class="badge">🚀REST API</div>
-  <div class="badge">🚀FastAPI</div>
-  <div class="badge">🚀JWT</div>
-</div>
-
-<p style="margin-top: 1rem; font-style: italic;">I aim to reach a professional level in these areas.             _-_-_-_-_-_-   Software is not just a tool for me; it's a way to create awareness, inspire thought, and build meaningful experiences.
-I'm focused on creating — not just games or apps, but something that can spark emotion, reflection, or curiosity.
-I often think:
-🧩 A single line of code isn’t just an operation — it might spark someone’s inner journey.
-🔍 Every project is more than a technical solution; it can also be an answer to a question or a feeling.
-I don’t want to build systems that merely "function" — I want to build things that carry meaning and make people think.
-If I can light up even one person’s mind, then what I’m doing is worth it.
- </p>
-  </section>
-
-<section id="contact">
-  <h2>🌐 Contact</h2>
-  <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-
- <a href="https://www.linkedin.com/in/rençber-akman-92b416333" target="_blank" style="text-decoration: none;">
-  <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: linear-gradient(135deg, #007cf0, #00dfd8); color: white; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.2); transition: transform 0.2s;">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="32" height="32" alt="LinkedIn" />
-    <p style="margin: 0;"><strong>LinkedIn:</strong> <span style="color:#fff;">Profili Gör</span></p>
-  </div>
-</a>
-
-    
-    <a href="https://github.com/RENCBERAKMAN" target="_blank" style="text-decoration: none;">
-      <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: linear-gradient(135deg, #333, #6e6e6e); color: white; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.2); transition: transform 0.2s;">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="32" height="32" alt="GitHub" />
-        <p style="margin: 0;"><strong>GitHub:</strong> <span style="color:#ccc;">Profilime Git</span></p>
+  <section id="tech">
+    <h2>02. Technical Arsenal</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Backend & Core</h3>
+        <p>Building scalable and clean architectures.</p>
+        <div class="badges">
+          <div class="badge">C#</div>
+          <div class="badge">.NET 8</div>
+          <div class="badge">Web API</div>
+          <div class="badge">Entity Framework</div>
+          <div class="badge">Microservices</div>
+        </div>
       </div>
-    </a>
-
-  
-    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: linear-gradient(135deg, #007cf0, #00dfd8); color: white; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="32" height="32" alt="E-posta" />
-      <p><strong>E-mail:</strong> <span onclick="copyEmail()" style="cursor:pointer; text-decoration: underline;">rencberakman7@gmail.com</span></p>
+      
+      <div class="card" style="border-color: rgba(255, 0, 85, 0.3);">
+        <h3>Security & Tools</h3>
+        <p>Defensive coding and system analysis.</p>
+        <div class="badges">
+          <div class="badge sec">Cyber Security</div>
+          <div class="badge sec">Kali Linux</div>
+          <div class="badge sec">Docker</div>
+          <div class="badge sec">SQL Server</div>
+          <div class="badge sec">Git</div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer style="margin-top: 3rem; padding: 2rem 1rem; text-align: center; background: #eee; color: #333; font-size: 0.95rem; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
-  © 2025 Rençber Akman — <span style="color: #007cf0;">Loading... ❤️</span>
-</footer>
+  <section id="projects">
+    <h2>03. Featured Projects</h2>
+    <div class="card-grid">
+      
+      <div class="card">
+        <h3>🛡️ SentinelVault (Backend)</h3>
+        <p>A secure, modular backend system built with <strong>.NET 8</strong> and <strong>Clean Architecture</strong> principles. Focusing on role-based authorization, JWT security, and SOLID principles.</p>
+        <div class="badges">
+          <div class="badge">C#</div>
+          <div class="badge">.NET 8</div>
+          <div class="badge">Security</div>
+        </div>
+      </div>
 
-  <button id="toggleTheme">🌙 Theme changed</button>
+      <div class="card">
+        <h3>🏎️ Simulation & Physics</h3>
+        <p>Although my focus is backend, I maintain my algorithmic skills by developing a physics-based racing simulation in Unreal Engine, exploring complex math and logic.</p>
+        <div class="badges">
+          <div class="badge">C++</div>
+          <div class="badge">Unreal Engine</div>
+          <div class="badge">Algorithm</div>
+        </div>
+      </div>
 
-  <canvas id="cursorTrail"></canvas>
+    </div>
+  </section>
+
+  <section id="philosophy" class="manifesto">
+    <h2>04. The Manifesto</h2>
+    <p class="quote">
+      "Code is not just logic; it is the bridge between a narrow window and a cosmic perspective. I don't just want to build systems that function; I want to build structures that make people think and question their own limits."
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>05. Establish Connection</h2>
+    <div class="contact-container">
+      <a href="https://www.linkedin.com/in/rençber-akman-92b416333" target="_blank" class="btn primary">
+        LinkedIn Profile
+      </a>
+      <a href="https://github.com/RENCBERAKMAN" target="_blank" class="btn secondary">
+        GitHub Repos
+      </a>
+      <a href="mailto:rencberakman7@gmail.com" class="btn secondary">
+        Send Encryption (Email)
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Rençber Akman. Built with C# Logic & Security Mindset.</p>
+  </footer>
 
   <script>
-   
-    const toggleBtn = document.getElementById('toggleTheme');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
+    // === CUSTOM CURSOR LOGIC ===
+    const cursor = document.getElementById("cursor");
+    const cursorDot = document.getElementById("cursor-dot");
 
-   
-    function copyEmail() {
-      navigator.clipboard.writeText('rencber@example.com');
-      alert('E-posta adresi kopyalandı!');
-    }
-
-
-    const cursor = document.getElementById("customCursor");
-    document.addEventListener("mousemove", e => {
+    document.addEventListener("mousemove", (e) => {
       cursor.style.left = e.clientX + "px";
       cursor.style.top = e.clientY + "px";
+      cursorDot.style.left = e.clientX + "px";
+      cursorDot.style.top = e.clientY + "px";
     });
 
-   
-    const canvas = document.getElementById('cursorTrail');
+    // === BACKGROUND PARTICLES (Starfield) ===
+    const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
+    
+    let width, height;
+    let particles = [];
 
-    window.addEventListener('resize', () => {
+    function resize() {
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
-    });
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-    let particles = [];
-
-    document.addEventListener('mousemove', (e) => {
-      for (let i = 0; i < 3; i++) {
-        particles.push({
-          x: e.clientX,
-          y: e.clientY,
-          alpha: 1,
-          radius: Math.random() * 4 + 2
-        });
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.color = Math.random() > 0.5 ? '#00dfd8' : '#ff0055'; // Cyan or Red
       }
-    });
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.01; // Twinkle effect
+        if (this.size <= 0.2) this.size = Math.random() * 2;
+        
+        if (this.x > width) this.x = 0;
+        if (this.x < 0) this.x = width;
+        if (this.y > height) this.y = 0;
+        if (this.y < 0) this.y = height;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 124, 240, ${p.alpha})`;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
-        p.y -= 0.5;
-        p.alpha -= 0.02;
       }
-      particles = particles.filter(p => p.alpha > 0);
-      requestAnimationFrame(animateParticles);
     }
 
-    animateParticles();
+    function init() {
+      for (let i = 0; i < 100; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
   </script>
 </body>
 </html>
