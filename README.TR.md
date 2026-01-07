@@ -1,21 +1,29 @@
-# RENÇBER AKMAN | Portfolyo
+# RENÇBER AKMAN | Backend Mimarı & Güvenlik Meraklısı
 
-![Unreal Engine](https://img.shields.io/badge/Unreal-Engine-blue?logo=unrealengine)
-![C++](https://img.shields.io/badge/C++-00599C?logo=cplusplus&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-grey?logo=express&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![.NET 8](https://img.shields.io/badge/.NET_8-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Siber Güvenlik](https://img.shields.io/badge/Odak-Güvenlik-red?style=for-the-badge&logo=kalilinux&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
-Merhaba 👋 Ben Rençber. Bilgisayar Programcılığı öğrencisiyim. Kod yazmak benim için sadece bir meslek değil, aynı zamanda düşüncelerimi somutlaştırmanın bir yolu.
+**Merhaba 👋 Ben Rençber.**
+Bilgisayar Programcılığı öğrencisiyim. Kod yazmak benim için sadece bir meslek değil, zihnimdeki düşünceleri somutlaştırmanın ve "evrenin işletim sistemini" anlamanın bir yolu.
 
-Unreal Engine ve C++ ile oyun geliştirmekten büyük keyif alıyorum. Şu sıralar bir araba yarışı oyunu üzerinde çalışıyorum. Aynı zamanda backend alanında REST API, microservice mimarisi, Docker gibi konularda kendimi geliştiriyorum.
+### 🚀 Yolculuk: Oyun Geliştirmeden Sistem Mimarlığına
 
-Bu repoyu, ne öğrendiğimi, ne ürettiğimi ve bu yolda nelerle karşılaştığımı sade biçimde belgelemek için oluşturdum.  
-Hâlâ birçok şey öğreniyorum ama öğrendiklerimi elimden geldiğince anlamlı hâle getirmeye çalışıyorum.
+Yolculuğuma **C++** ve **Unreal Engine** ile algoritmik düşünceyi öğrenerek başladım. Şimdi ise bu disiplini **Backend Geliştirme** ve **Siber Güvenlik** alanlarına taşıyorum.
 
-Yazılımı sadece teknik bir şey olarak değil; düşündüren, farkındalık yaratan bir araç olarak da görüyorum.  
-Küçük projelerle başlıyorum ama ileride daha fazla insana ulaşan işler üretmek istiyorum.
+Şu sıralar **C#, .NET 8 ve Clean Architecture** prensipleriyle modüler, güvenli ve ölçeklenebilir sistemler inşa etmek üzerine çalışıyorum.
 
-Kod yazarken kendime hep şunu soruyorum:  
-_"Gerçekten neye hizmet ediyor bu satır?"_
+### 🧠 Felsefem ve Vizyonum
 
-Belki henüz her şey tamam değil ama bu yolculukta kendi izimi bırakıyorum. 🌱
+Bu repoyu, ne öğrendiğimi, ne ürettiğimi ve bu yolda nelerle karşılaştığımı sade biçimde belgelemek için oluşturdum.
+Yazılımı sadece teknik bir iş olarak değil; düşündüren, farkındalık yaratan ve perspektif kazandıran bir araç olarak görüyorum.
+
+Küçük adımlarla ilerliyorum ama hedefim, ileride insanların hayatına dokunan ve anlam taşıyan işler üretmek.
+
+> Kod yazarken kendime hep şunu soruyorum:
+> **"Gerçekten neye hizmet ediyor bu satır?"**
+
+Hâlâ öğreniyorum, hata yapıyorum ve düzeltiyorum. Ama bu yolculukta, kendi izimi bırakıyorum. 🌱
+
+[Portfolyom](https://rencberakman.com) | [LinkedIn](https://www.linkedin.com/in/rençber-akman-92b416333)
